@@ -1,0 +1,25 @@
+version: '3.8'
+
+services:
+  mohandb:
+    image: mysql:8.0
+    container_name: mohancb1
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+      MYSQL_DATABASE: testdb
+
+  mohanflaskwebapp:
+    image: mohanflask:webappv1
+    build: . #location of docker file
+    ports:
+      - "3027:5000"
+    environment:
+      FLASK_ENV: development
+      MYSQL_HOST: mohandb
+      MYSQL_USER: root
+      MYSQL_PASSWORD: example
+      MYSQL_DATABASE: testdb
+    depends_on:
+      - mohandb
+
+  
