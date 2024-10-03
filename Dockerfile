@@ -19,5 +19,5 @@ EXPOSE 5000
 # Define environment variable
 ENV FLASK_APP=app.py
 
-# Run the application
+# Run the application as default container process
 CMD ["python", "app.py"]
